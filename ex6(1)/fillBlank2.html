@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>填填空</title>
+    <style>
+        html {
+            background-image: url("res/gmbg.jpg");
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            /* background-position: center center; */
+            /* overflow: auto; */
+            /* margin-bottom: 0; */
+            /* padding-bottom: 0; */
+        }
+
+        .ltext1 {
+            font: bolder 50px Microsoft Yahei;
+            color: rgb(165, 121, 8);
+            text-align: center;
+            transform: translateY(80px);
+            
+        }
+
+        #title {
+            transform: translate(200px,100px);
+        }
+        .btn{
+            transform: translate(1000px,50px);
+            width:100px;
+            height:50px;
+        }
+        .btn:hover{
+            color:grey;
+            opacity: 0.7;
+            
+        }
+
+        /* .ltext1 {
+            background-image: url("titlebg.png");
+            height: 70px;
+            line-height: 70px;
+            color: #EEF0F2;
+            font: normal 20px Microsoft Yahei;
+            text-align: center;
+            border-radius: 20px 20px 0 0; 
+            transform: translateY(80px); 
+        }   */
+    </style>
+</head>
+
+<body>
+
+    <div class="ltext1">填填空</div>
+        <form id="title">
+            <p>1. <input type="text" class="resAccount" id="answer1"> （一部医书）中推荐了自公元前202年之后至成书前出现的一些含金药方</p>
+            <p>2.“王水”是一种橘黄色的致命混合物，包含硝酸和 <input type="text" class="resAccount" id="answer2"></p>
+            <p>3. <input type="text" class="resAccount" nid="answer3"> 是一种在世界各地均有矿藏的灰色金属，自公元前3000年就被广泛用于催吐</p>
+            <p>4. <input type="text" class="resAccount" id="answer4"> 能够扩张面部的毛细血管，所以人们喝了它会面颊红润。</p>
+            <p>5.四液说这一理论认为，当体内的 <input type="text" class="resAccount" id="answer5"> 黑胆汁、黄胆汁、黏液四种体液失衡时，人体就会产生疾病</p>
+            <p>6. 玛丽·居里和皮埃尔·居里发现<input type="text" class="resAccount" id="answer6"> 并将其分离出来的事迹广为人知</p>
+            <p>7. 居里夫妇第一次从富铀矿物和现在被称作云母铀的矿石中分离出了 <input type="text" class="resAccount" id="answer7"> </p>
+            <p>8.今天，我们不遗余力地将饮用水中的 <input type="text" class="resAccount" id="answer8"> （一种化学元素）去除</p>
+            <p>9. <input type="text" class="resAccount" id="answer9"> （一种药品）的名字来源于希腊语单词的“好”和“黑”（这样命名是描述它遇到氨气时会变黑的特性）</p>
+            <p>10.有效（或者说有毒）剂量的汞，能促使产生至少 <input type="text" class="resAccount" id="answer10"> 品脱的唾液</p>
+            
+        </form>
+        <button id='submit' class="btn" type="button"><a href="">提交</a></button>
+        <button  class="btn" type="button"><a href="fillBlank1.html">上一关</a></button>
+        <button class="btn" type="button"><a href="mainInterface.html">返回</a></button>
+        <button  class="btn" type="button"><a href="achievement.html">解锁成就</a></button>
+        <script src="js/jquery-1.8.3.min.js"></script>
+        <script>
+            $(function () {
+                const answerList = ["琴酒", "白兰地","弗洛伊德", "可卡因", "鸦片","亚历山大·伍德","甘氨酸","马钱子","番木鳖碱","烟草"];
+                $("#submit").click(function () {
+                    x = $("#title").serializeArray();
+                    var arrayObj = new Array();
+                    $.each(x, function (i, field) {
+                        //数据存入数组
+                        arrayObj.push(field.value);
+                    });
+                    var ArrEqual = getArrEqual(answerList, arrayObj);
+                    var ArrUnequal = getArrUnequal(answerList, arrayObj);
+
+                    if (ArrUnequal.length == 10) {
+                        alert('恭喜你满分');
+                    } 
+                    else {
+                        // alert('抱歉,你只有' + ArrUnequal.toString() + '写对了！请重新写' + ArrEqual.toString() + '!')
+                        alert('恭喜完成此界面！');
+                    }
+                    //判断相同
+                    function getArrEqual(a, b) {
+                        var result = new Array();
+                        for (var i = 0; i < a.length; i++) {
+                            if (b.indexOf(a[i]) == -1) {
+                                result.push(a[i]);
+                            }
+                        }
+                        return result;
+                    };
+                    //不同判断
+                    function getArrUnequal(a, b) {
+                        var result = new Array();
+                        for (var i = 0; i < a.length; i++) {
+                            if (b.indexOf(a[i]) != -1) {
+                                result.push(a[i]);
+                            }
+                        }
+                        return result;
+                    };
+                    
+
+                });
+
+            })
+
+        </script>
+    
+
+    <div>
+        <!-- <div class="bg"><img src="" /></div> -->
+        
+        
+        <!-- <div class="judgement">
+            <ol id="exersizes">
+                <li class="li1">emm1<br/><input type="radio" name="opium" value="是"/><input type="radio" name="opium" value="否"/><br></li>
+                <li class="li2">emm2<br/><input type="radio" name="strychnine" value="是"/><input type="radio" name="strychnine" value="否"/><br></li>
+                <li class="li3">emm3<br/><input type="radio" name="tobacoo" value="是"/><input type="radio" name="tobacoo" value="否"/><br></li>
+                <li class="li4">emm4<br/><input type="radio" name="cocaine" value="是"/><input type="radio" name="cocaine" value="否"/><br></li>
+                <li class="li5">emm5<br/><input type="radio" name="alchohol" value="是"/><input type="radio" name="alchohol" value="否"/><br></li>
+                <li class="reset"><input type="reset" value="重新判断"/></li>
+                <li class="submit"><input type="submit" value="确认提交"/></li>
+            </ol>
+        <div class="achievement"><img src="" title="成就之冠"/></div>
+        
+        </div> -->
+    </div>
+</body>
+
+</html>

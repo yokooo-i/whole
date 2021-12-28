@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>是与非</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript">
+    	  function getgrade(){
+    			var res=parseInt($("input[name='judgement1']:checked").val());
+    			res+=parseInt($("input[name='judgement2']:checked").val());
+    			res+=parseInt($("input[name='judgement3']:checked").val());
+    			res+=parseInt($("input[name='judgement4']:checked").val());
+    			res+=parseInt($("input[name='judgement5']:checked").val());
+    			res+=parseInt($("input[name='judgement6']:checked").val());
+    			res+=parseInt($("input[name='judgement7']:checked").val());
+    			res+=parseInt($("input[name='judgement8']:checked").val());
+    			res+=parseInt($("input[name='judgement9']:checked").val());
+    			res+=parseInt($("input[name='judgement10']:checked").val());
+    			alert("你的成绩是："+res);
+    	}
+    	  function jumptwo(){
+			window.location.href="judge2.html"; 
+			alert(1);
+			}
+    	  function jumplogin(){
+		location.replace("login.html"); 
+			}
+    </script>
+    
+  </head>
+  <body>
+    <script src="js/jquery-1.8.3.min.js">
+    	$(document).ready(function(){
+    		var res=parseInt(("input[name='judgement'+i]:checked").val());
+    		console.log(res);
+    	});
+	</script>
+    
+    
+    <form name="frm" method="get">
+    <div class="login">
+      <div class="title"><b>元素周期表的盛宴</b></div>
+      
+      <div class="items">
+        <div class="item1">
+        	<div class="item2">
+        		<div class="quesion"><b>1.饮用水里含有氡对人体有益:</b></div>
+        		<input type="radio" name="judgement1" checked="checked" value="0">对
+          		<input type="radio" name="judgement1" checked="checked" value="10">错
+        	</div>
+      	</div>
+      </div>
+      
+      <div class="items">
+        <div class="item1">
+        	<div class="item2">
+        		<div class="quesion"><b>2.居里夫人发现了镭:</b></div>
+        		<input type="radio" name="judgement2" checked="checked" value="10">对
+          		<input type="radio" name="judgement2" checked="checked" value="0">错
+        	</div>
+      	</div>
+      </div>
+      
+      <div class="items">
+        <div class="item1">
+        	<div class="item2">
+        		<div class="quesion"><b>3.甘汞是一种无臭无味的白色粉末：</b></div>
+        		<input type="radio" name="judgement3" checked="checked" value="10">对
+          		<input type="radio" name="judgement3" checked="checked" value="0">错
+        	</div>
+      	</div>
+      </div>
+      
+      <div class="items">
+        <div class="item1">
+        	<div class="item2">
+        		<div class="quesion"><b>4.口服的甘汞，是一种强效的通便剂：</b></div>
+        		<input type="radio" name="judgement4" checked="checked" value="0">对
+          		<input type="radio" name="judgement4" checked="checked" value="10">错
+        	</div>
+      	</div>
+      </div>
+      
+      <div class="items">
+        <div class="item1">
+        	<div class="item2">
+        		<div class="quesion"><b>5.砒霜里面含有砷：</b></div>
+        		<input type="radio" name="judgement5" checked="checked" value="10">对
+          		<input type="radio" name="judgement5" checked="checked" value="0">错
+        	</div>
+      	</div>
+      </div>
+      
+      <div class="items">
+        <div class="item1">
+        	<div class="item2">
+        		<div class="quesion"><b>6.砷能够扩张面部的毛细血管：</b></div>
+        		<input type="radio" name="judgement6" checked="checked" value="10">对
+          		<input type="radio" name="judgement6" checked="checked" value="0">错
+        	</div>
+      	</div>
+      </div> 
+      
+      <div class="items">
+        <div class="item1">
+        	<div class="item2">
+        		<div class="quesion"><b>7.黄金不可以被王水溶解：</b></div>
+        		<input type="radio" name="judgement7" checked="checked" value="0">对
+          		<input type="radio" name="judgement7" checked="checked" value="10">错
+        	</div>
+      	</div>
+      </div> 
+      
+      <div class="items">
+        <div class="item1">
+        	<div class="item2">
+        		<div class="quesion"><b>8.氯化金极具腐蚀性：</b></div>
+        		<input type="radio" name="judgement8" checked="checked" value="10">对
+          		<input type="radio" name="judgement8" checked="checked" value="0">错
+        	</div>
+      	</div>
+      </div> 
+      
+      <div class="items">
+        <div class="item1">
+        	<div class="item2">
+        		<div class="quesion"><b>9锑是一种在世界各地均有矿藏的白色金属：</b></div>
+        		<input type="radio" name="judgement9" checked="checked" value="0">对
+          		<input type="radio" name="judgement9" checked="checked" value="10">错
+        	</div>
+      	</div>
+      </div> 
+      
+      <div class="items">
+        <div class="item1">
+        	<div class="item2">
+        		<div class="quesion"><b>10.锑能造成肝损伤、严重的胰腺炎、心脏问题：</b></div>
+        		<input type="radio" name="judgement10" checked="checked" value="10">对
+          		<input type="radio" name="judgement10" checked="checked" value="0">错
+        	</div>
+      	</div>
+      </div> 
+      
+      <div class="items">
+        <div class="item1">
+        	<div class="item2"><button onclick="getgrade()" class="btn" >确认答案</button></div>
+      	</div>
+      </div>
+      
+      <div class="items">
+        <div class="item1">
+        	<div class="lj">
+        		<a href="judge2.html">下一题</a>
+        		<a href="mainInterface.htmll">返回</a>
+        	</div>
+      	</div>
+      </div>
+      
+    </div>
+    </form>
+    
+  </body>
+</html>
+

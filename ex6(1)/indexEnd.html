@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>荒诞医学史</title>
+    
+</head>
+<body>
+    <script src="js/pixi.min.js"></script>
+    <script>
+		var app = new PIXI.Application(1500,750);
+        document.body.appendChild(app.view);
+        
+        var bg1 = new PIXI.Sprite.fromImage("bg1.png");
+        bg1.width = 1500;
+        bg1.height = 750;
+        app.stage.addChild(bg1);
+        
+        var sen1 = new PIXI.Sprite.fromImage("sen1.png");
+        sen1.x = 1500;
+        sen1.y = 100;       
+        app.stage.addChild(sen1);
+                        
+        var sen2 = new PIXI.Sprite.fromImage("sen2.png");
+        sen2.x = 1500;
+        sen2.y = 155;
+        app.stage.addChild(sen2);
+        
+        var bg4 = new PIXI.Sprite.fromImage("bg4.png");
+        bg4.width = 1500;
+        bg4.height = 700;
+        bg4.x = 0;
+        bg4.y =-700;
+        bg4.alpha = 0.6;
+        app.stage.addChild(bg4);
+        
+        var lamp = new PIXI.Sprite.fromImage("lamp.png");
+        lamp.x = 205;
+        lamp.y = 50;   
+        lamp.alpha = 0.6;
+        //if(bg4.y == -25)
+        /*while(bg4.y <= -75){
+        	if(bg4.y%2==0){
+        		lamp.alpha = 0.6;
+        	}
+        	else{
+        		lamp.alpha = 0;
+        	}
+        }*/
+        if(bg4.y == -75){
+        	lamp.alpha = 0.6;
+        }
+        
+        app.stage.addChild(lamp);
+        
+        app.ticker.add(animate);
+        function animate(){
+        	if(sen1.x != 950){
+        		sen1.x-=5;
+        	}
+        	if(sen2.x != 1050){
+        		sen2.x-=3;
+        	}
+        	if(bg4.y <= -75){
+        		bg4.y+=3;
+        		if(bg4.y%2==0){
+        			lamp.visible = false;
+        		}
+        		else{
+        			lamp.visible = true;
+        			lamp.alpha = 0.6;        			
+        		}
+        	}
+        	
+        }
+        
+        flag = 1;
+       	var rp = new PIXI.Sprite.fromImage("rp.png");
+       	rp.anchor.set(0.7,0.3);
+       	bg1.interactive=true;
+        bg1.on("mousemove",moverp);       	
+       	function moverp(event){
+       		
+       		var pos0 = event.data.getLocalPosition(app.stage);
+       		if(flag == 1){
+       		rp.x = pos0.x;
+       		rp.y = pos0.y;
+       		app.stage.addChild(rp);}
+       	}
+       	
+       	bg1.interactive=true;
+        bg1.on("click",click);       	
+       	function click(event){
+       		
+       		if(flag == 1){
+       		var pos1 = event.data.getLocalPosition(app.stage);
+       		var blood = new PIXI.Sprite.fromImage("blood.png");
+       		blood.anchor.set(0.5,0.5);
+       		var a = Math.random()*5;
+       		blood.scale.x = a;
+       		blood.scale.y = a;
+       		blood.rotation = Math.random()*5;
+       		blood.x = pos1.x;
+       		blood.y = pos1.y;
+       		app.stage.addChild(blood);
+       		}
+       		
+       	}
+       	
+       	lamp.interactive=true;
+        lamp.on("mouseover",extin);
+        function extin(){
+        	var warning = new PIXI.Text("EXTINGUISH THAT LAMP !");
+       			warning.x = 500;
+       			warning.y = 375;
+       			warning.scale.x = 2;
+       			warning.scale.y = 2;
+       			warning.style.fill = 0x856363;
+       			app.stage.addChild(warning);
+       			
+       		
+        }
+        
+        lamp.interactive=true;
+        lamp.on("click",guish);
+        function guish(){
+        	flag = 0;
+        	var bg5 = new PIXI.Sprite.fromImage("bg5.png");
+        	bg5.width = 1500;
+        	bg5.height = 750;
+        	app.stage.addChild(bg5);        	
+        	var angel = new PIXI.Sprite.fromImage("angel.png");
+       		angel.anchor.set(0.5,0.5);
+        	bg1.interactive=true;
+        	bg1.on("mousemove",movean);   	
+       		function movean(event){       		
+       		var pos2 = event.data.getLocalPosition(app.stage);       		
+       		angel.x = pos2.x;
+       		angel.y = pos2.y;
+       		app.stage.addChild(angel);
+			alert("恭喜你!勇士!你完成了来自中世纪医学的试炼！");
+       		}
+       		
+        }
+        
+    </script>
+</body>
+</html>

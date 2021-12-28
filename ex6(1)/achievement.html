@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>成就之冠</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript">
+      function playv(){
+          document.getElementById("achi").play();
+      }
+      function pausev(){
+          document.getElementById("achi").pause();
+      }
+      function jump(){
+          document.getElementById("achi").currentTime = 17;
+      }
+      function silence(){
+          document.getElementById("achi").muted = !document.getElementById("achhi").muted;
+      }
+    </script>
+  </head>
+  <style>
+      html{
+          background-attachment: fixed;
+          background-color: rgb(218, 203, 182);
+      }
+      #achi{
+        display: block;
+        margin: auto;
+        width: 1200px;
+      }
+      .controlVideo{
+        text-align: center;
+        text-decoration:bisque ;
+      }
+  </style>
+  <body>
+    
+    <video id="achi" width="1400" controls src="res/202112131841.mp4"></video><br/>
+    <div class="controlVideo">
+        &#128512;&nbsp;<input type="button" value="播放" onclick="playv()" />&nbsp;&nbsp;&nbsp;&nbsp;
+        &#128513;&nbsp;<input type="button" value="暂停" onclick="pausev()" />&nbsp;&nbsp;&nbsp;&nbsp;
+        &#128515;&nbsp;<input type="button" value="跳转" onclick="jump()" />&nbsp;&nbsp;&nbsp;&nbsp;
+        &#128516;&nbsp;<input type="button" value="静音" onclick="silence()" />&nbsp;&nbsp;&nbsp;&nbsp;
+    
+    <br/><br/>
+    </div>
+    
+    
+  </body>
+</html>

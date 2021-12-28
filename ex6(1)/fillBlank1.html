@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>填填空</title>
+    <style>
+        html {
+            background-image: url("res/gmbg.jpg");
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            /* background-position: center center; */
+            /* overflow: auto; */
+            /* margin-bottom: 0; */
+            /* padding-bottom: 0; */
+        }
+
+        .ltext1 {
+            font: bolder 50px Microsoft Yahei;
+            color: rgb(165, 121, 8);
+            text-align: center;
+            transform: translateY(80px);
+            
+        }
+
+        #title {
+            transform: translate(200px,100px);
+        }
+        .btn{
+            transform: translate(1000px,50px);
+            width:100px;
+            height:50px;
+        }
+        .btn:hover{
+            color:grey;
+            opacity: 0.7;
+            
+        }
+
+        /* .ltext1 {
+            background-image: url("titlebg.png");
+            height: 70px;
+            line-height: 70px;
+            color: #EEF0F2;
+            font: normal 20px Microsoft Yahei;
+            text-align: center;
+            border-radius: 20px 20px 0 0; 
+            transform: translateY(80px); 
+        }   */
+    </style>
+</head>
+
+<body>
+
+    <div class="ltext1">填填空</div>
+        <form id="title">
+            <p>1.金酒又名 <input type="text" class="resAccount" id="answer1"></p>
+            <p>2.当把葡萄酒蒸馏浓缩，会得到一种高浓度的酒，今天我们称其为 <input type="text" class="resAccount" id="answer2"></p>
+            <p>3.19世纪，极力倡导将可卡因当作兴奋剂使用的人中，最知名的一位应该是(著名心理学家）<input type="text" class="resAccount" nid="answer3"></p>
+            <p>4.古柯牛肉水包含了 <input type="text" class="resAccount" id="answer4"> 和23%的酒精</p>
+            <p>5.15世纪，知名医生帕拉塞尔苏斯将 <input type="text" class="resAccount" id="answer5"> 称作“不朽之石”</p>
+            <p>6. <input type="text" class="resAccount" id="answer6"> 发明了现代的皮下注射器</p>
+            <p>7. <input type="text" class="resAccount" id="answer7"> 是将神经信号传递到肌肉的化学物质</p>
+            <p>8.番木鳖碱自然存在于 <input type="text" class="resAccount" id="answer8"> 的种子中</p>
+            <p>9. <input type="text" class="resAccount" id="answer9"> 溶于水，能够增加因啤酒花产生的苦味</p>
+            <p>10.在墨西哥，<input type="text" class="resAccount" id="answer10"> 被当作止泻剂、泻药以及镇静剂</p>
+            
+        </form>
+        <button id='submit' class="btn" type="button">提交</button>
+        <button class="btn" type="button"><a href="fillBlank2.html">下一关</a></button>
+        <button class="btn" type="button"><a href="mainInterface.html">返回</a></button>
+        <script src="js/jquery-1.8.3.min.js"></script>
+        <script>
+            $(function () {
+                const answerList = ["琴酒", "白兰地","弗洛伊德", "可卡因", "鸦片","亚历山大·伍德","甘氨酸","马钱子","番木鳖碱","烟草"];
+                $("#submit").click(function () {
+                    x = $("#title").serializeArray();
+                    var arrayObj = new Array();
+                    $.each(x, function (i, field) {
+                        //数据存入数组
+                        arrayObj.push(field.value);
+                    });
+                    var ArrEqual = getArrEqual(answerList, arrayObj);
+                    var ArrUnequal = getArrUnequal(answerList, arrayObj);
+
+                    if (ArrUnequal.length == 10) {
+                        alert('恭喜你满分');
+                    } 
+                    else {
+                        // alert('抱歉,你只有' + ArrUnequal.toString() + '写对了！请重新写' + ArrEqual.toString() + '!')
+                        alert('恭喜完成此界面！');
+                    }
+                    //判断相同
+                    function getArrEqual(a, b) {
+                        var result = new Array();
+                        for (var i = 0; i < a.length; i++) {
+                            if (b.indexOf(a[i]) == -1) {
+                                result.push(a[i]);
+                            }
+                        }
+                        return result;
+                    };
+                    //不同判断
+                    function getArrUnequal(a, b) {
+                        var result = new Array();
+                        for (var i = 0; i < a.length; i++) {
+                            if (b.indexOf(a[i]) != -1) {
+                                result.push(a[i]);
+                            }
+                        }
+                        return result;
+                    };
+                    // if($("#answer1").text()=="琴酒"){
+                    //     alert(1);
+                    // }
+
+
+                });
+
+            })
+
+        </script>
+    
+
+    <div>
+        <!-- <div class="bg"><img src="" /></div> -->
+        
+        
+        <!-- <div class="judgement">
+            <ol id="exersizes">
+                <li class="li1">emm1<br/><input type="radio" name="opium" value="是"/><input type="radio" name="opium" value="否"/><br></li>
+                <li class="li2">emm2<br/><input type="radio" name="strychnine" value="是"/><input type="radio" name="strychnine" value="否"/><br></li>
+                <li class="li3">emm3<br/><input type="radio" name="tobacoo" value="是"/><input type="radio" name="tobacoo" value="否"/><br></li>
+                <li class="li4">emm4<br/><input type="radio" name="cocaine" value="是"/><input type="radio" name="cocaine" value="否"/><br></li>
+                <li class="li5">emm5<br/><input type="radio" name="alchohol" value="是"/><input type="radio" name="alchohol" value="否"/><br></li>
+                <li class="reset"><input type="reset" value="重新判断"/></li>
+                <li class="submit"><input type="submit" value="确认提交"/></li>
+            </ol>
+        <div class="achievement"><img src="" title="成就之冠"/></div>
+        
+        </div> -->
+    </div>
+</body>
+
+</html>
